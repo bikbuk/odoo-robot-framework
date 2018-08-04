@@ -1,4 +1,4 @@
-This is for making test automation using robotframework with seleniumlibrary
+This is for making test automation using robotframework with seleniumlibrary 
 
 ## Installation
 
@@ -7,6 +7,12 @@ pip install robotframework
 pip install --upgrade robotframework-seleniumlibrary
 git clone https://github.com/bikbuk/odoo-robot-framework.git
 ```
+If you want to run the test on Firefox, you have to download geckodriver [here](https://github.com/mozilla/geckodriver/releases)
+
+Extract the file, then put it on PATH
+
+
+You can also find drivers for other browser [here](https://www.seleniumhq.org/download/)
 
 ## Run tests
 
