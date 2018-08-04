@@ -4,8 +4,7 @@ This allows to play back the testcases recorded with https://github.com/brain-te
 
 ```bash
 pip install robotframework
-pip install robotframework-seleniumlibrary
-pip install robotframework-ExtendedSelenium2Library
+pip install --upgrade robotframework-seleniumlibrary
 git clone https://github.com/bikbuk/odoo-robot-framework.git
 ```
 
