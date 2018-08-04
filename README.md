@@ -1,4 +1,4 @@
-This is for making test automation using robotframework with seleniumlibrary 
+This is for making test automation using robotframework with seleniumlibrary for odoo
 
 ## Installation
 
