@@ -1,4 +1,5 @@
-This is for making test automation using robotframework with seleniumlibrary for odoo
+This is premade keyword forked from [brain-tec](https://github.com/brain-tec) 
+to make test automation via browser using robotframework with seleniumlibrary for odoo
 
 ## Installation
 
