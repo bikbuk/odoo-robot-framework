@@ -1,4 +1,4 @@
-This allows to play back the testcases recorded with https://github.com/brain-tec/se-builder
+This is for making test automation using robotframework with seleniumlibrary
 
 ## Installation
 
