@@ -5,3 +5,8 @@ StockPick/output.xml
 StockPick/report.html
 StockPick/geckodriver.log
 StockPick/*.png
+PurchaseOrder/log.html
+PurchaseOrder/output.xml
+PurchaseOrder/report.html
+PurchaseOrder/geckodriver.log
+PurchaseOrder/*.png
