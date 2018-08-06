@@ -19,6 +19,6 @@ USER = "admin"
 PASSWORD = "admin"
 
 # DB data
-ODOO_DB_USER = "alex"
-ODOO_DB_PASSWORD = "alex"
+ODOO_DB_USER = "odoo"
+ODOO_DB_PASSWORD = ""
 ODOO_DB_PORT = "5432"

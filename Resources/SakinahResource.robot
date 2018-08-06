@@ -1,7 +1,7 @@
 ** Settings ***
 
 Documentation  Special login Keywords For Odoo 10.
-Library	    ExtendedSelenium2Library
+Library	    SeleniumLibrary
 Library  	String
 Library     connection_erp.py
 Library     Collections

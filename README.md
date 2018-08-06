@@ -1,5 +1,5 @@
 This is premade keyword forked from [brain-tec](https://github.com/brain-tec) 
-to make test automation via browser using robotframework with seleniumlibrary for odoo
+to make test automation via browser using robotframework with seleniumlibrary for odoo000
 
 ## Installation
 
