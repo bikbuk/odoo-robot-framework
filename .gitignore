@@ -1,17 +1,7 @@
-<<<<<<< HEAD
-.idea
-config.py
-config.pyc
-connection_erp.pyc
-geckodriver.log
-log.html
-output.xml
-report.html
-=======
-#file
+Resources/config.pyc
+Resources/connection_erp.pyc
 StockPick/log.html
 StockPick/output.xml
 StockPick/report.html
 StockPick/geckodriver.log
 StockPick/*.png
->>>>>>> a2ffd32a4fe86efa0e226f6932baa9e7b48e2358
