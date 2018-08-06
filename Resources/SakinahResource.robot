@@ -1,6 +1,7 @@
-** Settings ***
+*** Settings ***
 
 Documentation  Special login Keywords For Odoo 10.
+Resource    odoo_10_0_EE.robot
 Library	    SeleniumLibrary
 Library  	String
 Library     connection_erp.py
@@ -42,3 +43,10 @@ ClickPencil    [Arguments]    ${product}
     Log To Console    ${product}
     Log To Console    xpath=//td[@data-field='product_id' and normalize-space(string())=normalize-space('${product}')]/following::i
     Click Element    xpath=//td[@data-field='product_id' and normalize-space(string())=normalize-space('${product}')]/following::i
+
+Many2OneCreate  [Arguments]     ${model}    ${field}
+    SelectNotebook  xpath=//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
+    Modal   Click Element  xpath=//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
+    Mouse Over  xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[last()]/a
+    Click Link  xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[last()]/a
+    ElementPostCheck
