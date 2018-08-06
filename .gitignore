@@ -1,4 +1,5 @@
-#file
+Resources/config.pyc
+Resources/connection_erp.pyc
 StockPick/log.html
 StockPick/output.xml
 StockPick/report.html

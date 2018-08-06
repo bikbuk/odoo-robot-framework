@@ -12,15 +12,24 @@ Suite Setup      Run Keywords      Set Up
 
 *** Test Cases ***
 Login as Gudang
-    LoginMember    gudang@sakinahkerudung.com    demo
+    LoginMember    gudang@sakinahkerudung.com    booshes_clone
 
-Enter Inventory - Stock Operation
-	MainMenu    210
+Enter Inventory - Batch
+    MainMenu    210
+    MainMenu    333
+
+Create Stock Batch
+    Button    sakinah.warehouse.batch    oe_list_add
+    Button    sakinah.warehouse.batch    oe_form_button_save
+    Wait Until Element Does Not Contain    xpath=//h1/span[@class='o_form_field o_form_required']    'New'
+    Set Global Variable    ${batch_name}    Batch
+    ${batch_name}=    Get Text    xpath=//h1/span[@class='o_form_field o_form_required']
+    Log To Console    ${batch_name}
     MainMenu    331
 
 Create Stock Picking Gudang - Riung
     Button    stock.picking    oe_list_add
-    Many2OneSelect    stock.picking    parent_batch    Dummy Batch
+    Many2OneSelect    stock.picking    parent_batch    ${batch_name}
     Many2OneSelect    stock.picking    warehouse_src_id    Gudang Pusat
     Many2OneSelect    stock.picking    warehouse_dest_id    Riung
 
@@ -57,7 +66,7 @@ Create Stock Picking Gudang - Riung
 
 Create Stock Picking Gudang - Jatinangor
     Button    stock.picking    oe_list_add
-    Many2OneSelect    stock.picking    parent_batch    Dummy Batch
+    Many2OneSelect    stock.picking    parent_batch    ${batch_name}
     Many2OneSelect    stock.picking    warehouse_src_id    Gudang Pusat
     Many2OneSelect    stock.picking    warehouse_dest_id    Jatinangor
 
@@ -94,7 +103,7 @@ Create Stock Picking Gudang - Jatinangor
 
 Create Stock Picking Gudang - Gerlong
     Button    stock.picking    oe_list_add
-    Many2OneSelect    stock.picking    parent_batch    Dummy Batch
+    Many2OneSelect    stock.picking    parent_batch    ${batch_name}
     Many2OneSelect    stock.picking    warehouse_src_id    Gudang Pusat
     Many2OneSelect    stock.picking    warehouse_dest_id    Gerlong
 

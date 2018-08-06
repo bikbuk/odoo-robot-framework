@@ -39,9 +39,6 @@ LoginMember   [Arguments]    ${user}    ${db}
     Click Button    xpath=//div[contains(@class,'oe_login_buttons')]/button[@type='submit']
 
 ClickPencil    [Arguments]    ${product}
-    #Click Element    xpath=//i[contains(@class,'fa-pencil') and ancestor::td[@data-field='show_detail' and @data-bt-testing-model_name='stock.pack.operation' and preceding-sibling::td['${product_id}' and contains(@data-field,'product_id') and contains(@data-bt-testing-model_name,'stock.pack.operation')]]]
-    Log To Console    ${product}
-    Log To Console    xpath=//td[@data-field='product_id' and normalize-space(string())=normalize-space('${product}')]/following::i
     Click Element    xpath=//td[@data-field='product_id' and normalize-space(string())=normalize-space('${product}')]/following::i
 
 Many2OneCreate  [Arguments]     ${model}    ${field}
@@ -50,3 +47,7 @@ Many2OneCreate  [Arguments]     ${model}    ${field}
     Mouse Over  xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[last()]/a
     Click Link  xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[last()]/a
     ElementPostCheck
+    
+PurchaseKanbanBox    [Arguments]    ${name}
+    Click Element    xpath=//div[@class='oe_kanban_card oe_kanban_global_click o_kanban_record' and preceding::span[normalize-space('${name}')]]
+
