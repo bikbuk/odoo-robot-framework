@@ -1,6 +1,6 @@
 #file
 StockPick/log.html
 StockPick/output.xml
-StockPick/report.xml
+StockPick/report.html
 StockPick/geckodriver.log
 StockPick/*.png
