@@ -1,5 +1,5 @@
-Resources/config.pyc
-Resources/connection_erp.pyc
+Resources/*.pyc
+
 StockPick/log.html
 StockPick/output.xml
 StockPick/report.html

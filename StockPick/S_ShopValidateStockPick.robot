@@ -5,7 +5,7 @@ Resource       ../Resources/odoo_10_0_EE.robot
 Resource       ../Resources/SakinahResource.robot
 Variables      ../Resources/config.py
 Library        Collections
-Library        ExtendedSelenium2Library
+Library        SeleniumLibrary
 
 Suite Setup      Run Keywords      Set Up
 
