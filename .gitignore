@@ -7,6 +7,7 @@ geckodriver.log
 log.html
 output.xml
 report.html
+Resources/*.pyc
 =======
 #file
 StockPick/log.html
