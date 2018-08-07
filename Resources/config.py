@@ -22,3 +22,6 @@ PASSWORD = "admin"
 ODOO_DB_USER = "odoo"
 ODOO_DB_PASSWORD = ""
 ODOO_DB_PORT = "5432"
+
+# Other data
+P_ORDER = "PO00018" 
