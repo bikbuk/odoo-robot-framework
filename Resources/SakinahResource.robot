@@ -41,4 +41,4 @@ ClickPencil    [Arguments]    ${product}
     Click Element    xpath=//td[@data-field='product_id' and normalize-space(string())=normalize-space('${product}')]/following::i
 
 PurchaseKanbanBox    [Arguments]    ${name}
-    Click Element    xpath=//div[@class='oe_kanban_card oe_kanban_global_click o_kanban_record' and preceding::span[normalize-space('${name}')]]
+    Click Element    xpath=//div[@class='oe_kanban_card oe_kanban_global_click o_kanban_record' and descendant::span[contains(normalize-space(string()), normalize-space('${name}'))]]
