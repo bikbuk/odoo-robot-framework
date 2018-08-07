@@ -1,6 +1,7 @@
-** Settings ***
+*** Settings ***
 
 Documentation  Special login Keywords For Odoo 10.
+Resource    odoo_10_0_EE.robot
 Library	    SeleniumLibrary
 Library  	String
 Library     connection_erp.py
@@ -40,5 +41,28 @@ LoginMember   [Arguments]    ${user}    ${db}
 ClickPencil    [Arguments]    ${product}
     Click Element    xpath=//td[@data-field='product_id' and normalize-space(string())=normalize-space('${product}')]/following::i
 
+Many2OneCreate  [Arguments]     ${model}    ${field}
+    SelectNotebook  xpath=//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
+    Modal   Click Element  xpath=//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
+    Mouse Over  xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[last()]/a
+    Click Link  xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[last()]/a
+    ElementPostCheck
+    
 PurchaseKanbanBox    [Arguments]    ${name}
+
     Click Element    xpath=//div[@class='oe_kanban_card oe_kanban_global_click o_kanban_record' and descendant::span[contains(normalize-space(string()), normalize-space('${name}'))]]
+
+
+
+SavePopUpWindow
+    Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
+    Click Button    xpath=//div[@class='modal-footer']/button[contains(@class,'btn-primary') and not(contains(@class,'o_form_button_edit'))]
+
+DiscarPopUpWindow
+    Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
+    Click Button    xpath=//div[@class='modal-footer']/button[contains(@class,'o_form_button_cancel')]
+
+EditPopUpWindow
+    Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
+    Click Button    xpath=//div[@class='modal-footer']/button[contains(@class,'o_form_button_edit')]
+>>>>>>> 947ef933f9b7aff2f1b93ace4b164cf7679d1440
