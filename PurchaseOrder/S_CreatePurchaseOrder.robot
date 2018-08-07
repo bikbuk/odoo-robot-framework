@@ -36,28 +36,21 @@ Acc Edit Purchase Order
     PurchaseKanbanBox    PO00001
     Button    purchase.order    oe_form_button_edit
 
+    Set Selenium Speed    0.2
     NewOne2Many    purchase.order    order_line
     X2Many-Many2OneSelect    purchase.order.line    product_id    [0051] Parfum
-    Log To Console    Satu HAHAHAHA
     X2Many-Float    purchase.order.line    product_qty    50.0
-    Log To Console    Dua HAHAHAHA
     X2Many-Float    purchase.order.line    price_subtotal    250000.0
-    Log To Console    Tiga HAHAHAHA
 
     NewOne2Many    purchase.order    order_line
     X2Many-Many2OneSelect    purchase.order.line    product_id    [0055] Tempat Peniti
-    Log To Console    Satu HAHAHAHA
     X2Many-Float    purchase.order.line    product_qty    50.0
-    Log To Console    Dua HAHAHAHA
     X2Many-Float    purchase.order.line    price_subtotal    250000.0
-    Log To Console    Tiga HAHAHAHA
 
     NewOne2Many    purchase.order    order_line
     X2Many-Many2OneSelect    purchase.order.line    product_id    [0056] Tas Selendang
-    Log To Console    Satu HAHAHAHA
     X2Many-Float    purchase.order.line    product_qty    50.0
-    Log To Console    Dua HAHAHAHA
     X2Many-Float    purchase.order.line    price_subtotal    375000.0
-    Log To Console    Tiga HAHAHAHA
+    Set Selenium Speed    0
 
     Button    purchase.order    button_confirm
