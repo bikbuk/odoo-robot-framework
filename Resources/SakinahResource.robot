@@ -49,5 +49,20 @@ Many2OneCreate  [Arguments]     ${model}    ${field}
     ElementPostCheck
     
 PurchaseKanbanBox    [Arguments]    ${name}
-    Click Element    xpath=//div[@class='oe_kanban_card oe_kanban_global_click o_kanban_record' and preceding::span[normalize-space('${name}')]]
 
+    Click Element    xpath=//div[@class='oe_kanban_card oe_kanban_global_click o_kanban_record' and descendant::span[contains(normalize-space(string()), normalize-space('${name}'))]]
+
+
+
+SavePopUpWindow
+    Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
+    Click Button    xpath=//div[@class='modal-footer']/button[contains(@class,'btn-primary') and not(contains(@class,'o_form_button_edit'))]
+
+DiscarPopUpWindow
+    Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
+    Click Button    xpath=//div[@class='modal-footer']/button[contains(@class,'o_form_button_cancel')]
+
+EditPopUpWindow
+    Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
+    Click Button    xpath=//div[@class='modal-footer']/button[contains(@class,'o_form_button_edit')]
+>>>>>>> 947ef933f9b7aff2f1b93ace4b164cf7679d1440

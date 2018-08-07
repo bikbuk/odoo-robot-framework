@@ -1,7 +1,12 @@
-Resources/config.pyc
-Resources/connection_erp.pyc
+Resources/*.pyc
+
 StockPick/log.html
 StockPick/output.xml
 StockPick/report.html
 StockPick/geckodriver.log
 StockPick/*.png
+PurchaseOrder/log.html
+PurchaseOrder/output.xml
+PurchaseOrder/report.html
+PurchaseOrder/geckodriver.log
+PurchaseOrder/*.png

@@ -1,4 +1,4 @@
-** Settings ***
+*** Settings ***
 
 Documentation  Common keywords for OpenERP tests
 ...	versions of the application. The correct SUT specific resource
@@ -230,7 +230,7 @@ Float	[Arguments]	${model}	${field}	${value}
 	Modal	Input Text	xpath=//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']	  value=${value}
 	ElementPostCheck
 
-X2Many-Float	[Arguments]	${model}	${field}	${value}
+X2Many-Float	[Arguments]		${model}	${field}	${value}
 	Modal	Clear Element Text	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']
 	Modal	Input Text	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']	value=${value}
 	ElementPostCheck
