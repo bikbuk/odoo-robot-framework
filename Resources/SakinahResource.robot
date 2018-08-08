@@ -47,7 +47,7 @@ Many2OneCreate  [Arguments]     ${model}    ${field}
     Mouse Over  xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[last()]/a
     Click Link  xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[last()]/a
     ElementPostCheck
-    
+
 PurchaseKanbanBox    [Arguments]    ${name}
 
     Click Element    xpath=//div[@class='oe_kanban_card oe_kanban_global_click o_kanban_record' and descendant::span[contains(normalize-space(string()), normalize-space('${name}'))]]
@@ -65,4 +65,3 @@ DiscarPopUpWindow
 EditPopUpWindow
     Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
     Click Button    xpath=//div[@class='modal-footer']/button[contains(@class,'o_form_button_edit')]
->>>>>>> 947ef933f9b7aff2f1b93ace4b164cf7679d1440

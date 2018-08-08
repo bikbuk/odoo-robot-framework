@@ -11,7 +11,7 @@ Suite Setup      Run Keywords      Set Up
 
 *** Test Cases ***
 Login as Gudang
-    LoginMember    gudang@sakinahkerudung.com    booshes_clone
+    LoginMember    gudang@sakinahkerudung.com    ${ODOO_DB}
 
 Enter Inventory - Batch
     MainMenu    210

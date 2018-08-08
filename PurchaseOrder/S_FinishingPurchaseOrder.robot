@@ -11,7 +11,7 @@ Suite Setup      Run Keywords      Set Up
 
 *** Test Cases ***
 Login as Accounting
-    LoginMember    acc@sakinahkerudung.com    booshes_clone
+    LoginMember    acc@sakinahkerudung.com    ${ODOO_DB}
 
 Acc Enter Purchase - Purchase Order
     MainMenu    278
