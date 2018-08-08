@@ -52,8 +52,6 @@ PurchaseKanbanBox    [Arguments]    ${name}
 
     Click Element    xpath=//div[@class='oe_kanban_card oe_kanban_global_click o_kanban_record' and descendant::span[contains(normalize-space(string()), normalize-space('${name}'))]]
 
-
-
 SavePopUpWindow
     Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
     Click Button    xpath=//div[@class='modal-footer']/button[contains(@class,'btn-primary') and not(contains(@class,'o_form_button_edit'))]
@@ -65,3 +63,19 @@ DiscarPopUpWindow
 EditPopUpWindow
     Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
     Click Button    xpath=//div[@class='modal-footer']/button[contains(@class,'o_form_button_edit')]
+
+PaymentJournal     [Arguments]     ${model}    ${field}    ${value}
+    SelectNotebook  xpath=//select[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
+    Click Element  xpath=//div[contains(@div,modal)]//select[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
+    Click Element  xpath=//div[contains(@div,modal)]//select[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']/option[contains(text(), '${value}')]
+    ElementPostCheck
+
+WaitBeforeClose     [Arguments]     ${model}        ${button_name}
+    Wait Until Element Is Not Visible     xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}' and not(contains(@class,'o_form_invisible'))]
+
+ButtonConfig        [Arguments]     ${model}=       ${button_name}= ${class}=
+    Run Keyword Unless  '${model}' == ''    Modal   Focus   xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}' and not(contains(@class,'o_form_invisible'))]
+    Run Keyword Unless  '${model}' == ''    Modal   Click Button    xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}' and not(contains(@class,'o_form_invisible'))]
+    Run Keyword If  '${model}' == ''    Modal   Focus   xpath=//button[@class='${class}']
+    Run Keyword If  '${model}' == ''    Modal   Click Button    xpath=//button[@class='${class}']
+    ElementPostCheck

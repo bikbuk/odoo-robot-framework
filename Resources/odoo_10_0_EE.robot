@@ -63,7 +63,7 @@ BackToMainMenu
 	ElementPostCheck
 
 # ok: 90EE
-MainMenu	[Arguments]	${menu}
+MainMenu	[Arguments]		${menu}
 	Click Link	xpath=//a[@data-menu='${menu}']
 	Wait Until Page Contains Element	xpath=//body[contains(@class, 'o_web_client')]
 	ElementPostCheck
@@ -176,7 +176,7 @@ Many2OneSelect	[Arguments]	${model}	${field}	${value}
 	Click Link	xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[1]/a
 	ElementPostCheck
 
-Many2OneSelectWizard	[Arguments]	${model}	${field}	${value}
+Many2OneSelectWizard	[Arguments]		${model}	${field}	${value}
 	SelectNotebook	xpath=//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
 	Input Text	xpath=//div[contains(@div,modal)]//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']	${value}
 	Click Link	xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[1]/a
@@ -186,6 +186,7 @@ Many2OneSelectWizard	[Arguments]	${model}	${field}	${value}
 X2Many-Many2OneSelect	[Arguments]	${model}	${field}	${value}
 	Modal	Input Text	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']	value=${value}
 	Modal	Click Link	xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[1]/a
+	Modal	Press Key	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']	value=\\09
 	ElementPostCheck
 
 
@@ -231,8 +232,9 @@ Float	[Arguments]	${model}	${field}	${value}
 	ElementPostCheck
 
 X2Many-Float	[Arguments]		${model}	${field}	${value}
-	Modal	Clear Element Text	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']
+	Modal	Click Element 	 	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']
 	Modal	Input Text	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']	value=${value}
+	Modal	Press Key	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']	value=\\09
 	ElementPostCheck
 
 FloatWizard	[Arguments]	${model}	${field}	${value}
@@ -325,7 +327,7 @@ One2ManySelectRecord	[Arguments]	${model}	${field}	${submodel}	@{fields}
 	ElementPostCheck
 
 
-SelectListView  [Arguments]	${model}	@{fields}
+SelectListView	[Arguments]		${model}	@{fields}
 	# Initialize variable
 	${xpath}=	Set Variable
 

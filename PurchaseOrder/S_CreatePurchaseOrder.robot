@@ -25,6 +25,8 @@ Create Purchase Order
     Click Element    xpath=//button[@class='btn btn-default o_attach']
     Wait Until Page Contains Element    xpath=//div[@class='oe_attachment']    999
     Button    purchase.order    oe_form_button_save
+    WaitBeforeClose     purchase.order      oe_form_button_save
+    Close Browser
 
 Login as Accounting
     LoginMember    acc@sakinahkerudung.com    ${ODOO_DB}
@@ -33,13 +35,12 @@ Acc Enter Purchase - Purchase Order
     MainMenu    278
     MainMenu    294
 
-Acc Edit Purchase Order
-    PurchaseKanbanBox    PO00001
+    PurchaseKanbanBox    PO${N_FAILURE}
     Button    purchase.order    oe_form_button_edit
 
     NewOne2Many    purchase.order    order_line
     X2Many-Many2OneSelect    purchase.order.line    product_id    [0051] Parfum
-    X2Many-Float    purchase.order.line    product_qty    50.0
+    X2Many-Float    purchase.order.line    product_qty      50.0
     X2Many-Float    purchase.order.line    price_subtotal    250000.0
 
     NewOne2Many    purchase.order    order_line
@@ -53,3 +54,47 @@ Acc Edit Purchase Order
     X2Many-Float    purchase.order.line    price_subtotal    375000.0
 
     Button    purchase.order    button_confirm
+    WaitBeforeClose     purchase.order      button_confirm
+    Close Browser
+
+Login as Gudang
+    LoginMember    gudang@sakinahkerudung.com    ${ODOO_DB}
+
+Enter Inventory - Batch
+    MainMenu    210
+    MainMenu    331
+
+    SelectListView    stock.picking    origin=PO${N_FAILURE}
+
+    ClickPencil    [0051] Parfum
+    FloatWizard    stock.pack.operation    qty_done    50.0
+    ButtonWizard    stock.pack.operation    save
+
+    ClickPencil    [0055] Tempat Peniti
+    FloatWizard    stock.pack.operation    qty_done    50.0
+    ButtonWizard    stock.pack.operation    save
+
+    ClickPencil    [0056] Tas Selendang
+    FloatWizard    stock.pack.operation    qty_done    50.0
+    ButtonWizard    stock.pack.operation    save
+
+    Button    stock.picking    do_new_transfer
+    WaitBeforeClose     stock.picking   do_new_transfer
+    Close Browser
+
+Login as Accounting 2nd
+    LoginMember    acc@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    278
+    MainMenu    294
+
+    PurchaseKanbanBox    PO${N_FAILURE}
+    Button    purchase.order    action_view_invoice
+    Button    account.invoice    oe_list_add
+    Button    account.invoice    action_invoice_open
+    Button    account.invoice    144
+    PaymentJournal  account.payment    journal_id    Bank (IDR)
+    ButtonWizard    account.payment    post
+    WaitBeforeClose     account.payment     post
+    MainMenu    294
+    PurchaseKanbanBox    PO${N_FAILURE}
+    ButtonWizard    purchase.order    button_done
