@@ -9,3 +9,9 @@ PurchaseOrder/output.xml
 PurchaseOrder/report.html
 PurchaseOrder/geckodriver.log
 PurchaseOrder/*.png
+log.html
+output.xml
+report.html
+geckodriver.log
+*.png
+

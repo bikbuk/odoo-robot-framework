@@ -35,7 +35,7 @@ Acc Enter Purchase - Purchase Order
     MainMenu    278
     MainMenu    294
 
-    PurchaseKanbanBox    ${P_ORDER}
+    PurchaseKanbanBox    PO${N_FAILURE}
     Button    purchase.order    oe_form_button_edit
 
     NewOne2Many    purchase.order    order_line
@@ -64,7 +64,7 @@ Enter Inventory - Batch
     MainMenu    210
     MainMenu    331
 
-    SelectListView    stock.picking    origin=${P_ORDER}
+    SelectListView    stock.picking    origin=PO${N_FAILURE}
 
     ClickPencil    [0051] Parfum
     FloatWizard    stock.pack.operation    qty_done    50.0
@@ -87,7 +87,7 @@ Login as Accounting 2nd
     MainMenu    278
     MainMenu    294
 
-    PurchaseKanbanBox    ${P_ORDER}
+    PurchaseKanbanBox    PO${N_FAILURE}
     Button    purchase.order    action_view_invoice
     Button    account.invoice    oe_list_add
     Button    account.invoice    action_invoice_open
@@ -96,5 +96,5 @@ Login as Accounting 2nd
     ButtonWizard    account.payment    post
     WaitBeforeClose     account.payment     post
     MainMenu    294
-    PurchaseKanbanBox    ${P_ORDER}
+    PurchaseKanbanBox    PO${N_FAILURE}
     ButtonWizard    purchase.order    button_done

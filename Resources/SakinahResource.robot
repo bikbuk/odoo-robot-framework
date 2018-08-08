@@ -72,3 +72,10 @@ PaymentJournal     [Arguments]     ${model}    ${field}    ${value}
 
 WaitBeforeClose     [Arguments]     ${model}        ${button_name}
     Wait Until Element Is Not Visible     xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}' and not(contains(@class,'o_form_invisible'))]
+
+ButtonConfig        [Arguments]     ${model}=       ${button_name}= ${class}=
+    Run Keyword Unless  '${model}' == ''    Modal   Focus   xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}' and not(contains(@class,'o_form_invisible'))]
+    Run Keyword Unless  '${model}' == ''    Modal   Click Button    xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}' and not(contains(@class,'o_form_invisible'))]
+    Run Keyword If  '${model}' == ''    Modal   Focus   xpath=//button[@class='${class}']
+    Run Keyword If  '${model}' == ''    Modal   Click Button    xpath=//button[@class='${class}']
+    ElementPostCheck
