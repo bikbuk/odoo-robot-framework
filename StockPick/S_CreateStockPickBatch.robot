@@ -43,6 +43,7 @@ Create Stock Picking Gudang - Riung
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
+    WaitBeforeClose     stock.picking   action_assign
 
     ClickPencil    [0051] Parfum
     FloatWizard    stock.pack.operation    qty_done    5.0
@@ -80,6 +81,7 @@ Create Stock Picking Gudang - Jatinangor
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
+    WaitBeforeClose     stock.picking   action_assign
 
     ClickPencil    [0051] Parfum
     FloatWizard    stock.pack.operation    qty_done    5.0
@@ -117,6 +119,7 @@ Create Stock Picking Gudang - Gerlong
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
+    WaitBeforeClose     stock.picking   action_assign
 
     ClickPencil    [0051] Parfum
     FloatWizard    stock.pack.operation    qty_done    5.0

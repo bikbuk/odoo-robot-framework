@@ -14,7 +14,7 @@ Marionette= True
 SERVER = "localhost"
 ODOO_PORT = "8069"
 ODOO_URL = "http://" + SERVER + ":" + ODOO_PORT
-ODOO_DB = "demo"
+ODOO_DB = "demoo"
 USER = "admin"
 PASSWORD = "admin"
 
@@ -22,3 +22,6 @@ PASSWORD = "admin"
 ODOO_DB_USER = "odoo"
 ODOO_DB_PASSWORD = ""
 ODOO_DB_PORT = "5432"
+
+# Other data
+N_FAILURE = "00001" 

@@ -19,7 +19,7 @@ Riung Enter Inventory - Stock Operation
     MainMenu    330
 
 Riung Validate Stock Picking
-    SelectListView    stock.picking    name=RIUNG/IN/00002
+    SelectListView    stock.picking    name=RIUNG/IN/${N_FAILURE}
 
     ClickPencil    [0051] Parfum
     FloatWizard    stock.pack.operation    qty_done    5.0
@@ -43,7 +43,7 @@ Jatinangor Enter Inventory - Stock Operation
     MainMenu    330
 
 Jatinangor Validate Stock Picking
-    SelectListView    stock.picking    name=JTNGR/IN/00002
+    SelectListView    stock.picking    name=JTNGR/IN/${N_FAILURE}
 
     ClickPencil    [0051] Parfum
     FloatWizard    stock.pack.operation    qty_done    5.0
@@ -67,7 +67,7 @@ Gerlong Enter Inventory - Stock Operation
     MainMenu    330
 
 Gerlong Validate Stock Picking
-    SelectListView    stock.picking    name=GRLNG/IN/00002
+    SelectListView    stock.picking    name=GRLNG/IN/${N_FAILURE}
 
     ClickPencil    [0051] Parfum
     FloatWizard    stock.pack.operation    qty_done    5.0
