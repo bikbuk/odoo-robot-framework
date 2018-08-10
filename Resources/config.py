@@ -6,7 +6,7 @@
 SELENIUM_DELAY = 0
 
 # How long a "Wait Until ..." command should wait
-SELENIUM_TIMEOUT = 20
+SELENIUM_TIMEOUT = 30
 BROWSER = "ff"
 Marionette= True
 
@@ -14,7 +14,7 @@ Marionette= True
 SERVER = "localhost"
 ODOO_PORT = "8069"
 ODOO_URL = "http://" + SERVER + ":" + ODOO_PORT
-ODOO_DB = "demoo"
+ODOO_DB = "demo"
 USER = "admin"
 PASSWORD = "admin"
 

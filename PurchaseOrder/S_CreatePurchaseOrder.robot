@@ -11,14 +11,11 @@ Library        SeleniumLibrary
 Suite Setup      Run Keywords      Set Up
 
 *** Test Cases ***
-Login as Comisionare
+Comisionare Make Purchase Order
     LoginMember    umiabi@sakinahkerudung.com    ${ODOO_DB}
-
-Comisionare Enter Purchase - Purchase Order
 	MainMenu    278
     MainMenu    328
 
-Create Purchase Order
 	Button    purchase.order    oe_list_add
 	Many2OneSelect    purchase.order    partner_id    Aly
 	#Choose File    xpath=//input[@class='o_form_input_file']    /home/alpakka/Pictures/haha.jpg
@@ -28,10 +25,8 @@ Create Purchase Order
     WaitBeforeClose     purchase.order      oe_form_button_save
     Close Browser
 
-Login as Accounting
+Acc Input Items in Purchase Order
     LoginMember    acc@sakinahkerudung.com    ${ODOO_DB}
-
-Acc Enter Purchase - Purchase Order
     MainMenu    278
     MainMenu    294
 
@@ -57,10 +52,8 @@ Acc Enter Purchase - Purchase Order
     WaitBeforeClose     purchase.order      button_confirm
     Close Browser
 
-Login as Gudang
+Gudang Receive Purchased Stock
     LoginMember    gudang@sakinahkerudung.com    ${ODOO_DB}
-
-Enter Inventory - Batch
     MainMenu    210
     MainMenu    331
 
@@ -82,7 +75,7 @@ Enter Inventory - Batch
     WaitBeforeClose     stock.picking   do_new_transfer
     Close Browser
 
-Login as Accounting 2nd
+Accounting Make and Pay Bills
     LoginMember    acc@sakinahkerudung.com    ${ODOO_DB}
     MainMenu    278
     MainMenu    294
@@ -98,3 +91,5 @@ Login as Accounting 2nd
     MainMenu    294
     PurchaseKanbanBox    PO${N_FAILURE}
     ButtonWizard    purchase.order    button_done
+    WaitBeforeClose     purchase.order    button_done
+    Close Browser

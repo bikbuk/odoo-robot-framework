@@ -11,14 +11,11 @@ Suite Setup      Run Keywords      Set Up
 
 
 *** Test Cases ***
-Login as Riung
+Riung Validate Stock Picking
     LoginMember    riung@sakinahkerudung.com    ${ODOO_DB}
-
-Riung Enter Inventory - Stock Operation
 	MainMenu    210
     MainMenu    330
 
-Riung Validate Stock Picking
     SelectListView    stock.picking    name=RIUNG/IN/${N_FAILURE}
     Button    stock.picking    oe_form_button_edit
 
@@ -35,16 +32,14 @@ Riung Validate Stock Picking
     ButtonWizard    stock.pack.operation    save
 
     Button    stock.picking    do_new_transfer
+    WaitBeforeClose     stock.picking      do_new_transfer
     Close Browser
 
-Login as Jatinangor
+Jatinangor Validate Stock Picking
     LoginMember    jtngr@sakinahkerudung.com    ${ODOO_DB}
-
-Jatinangor Enter Inventory - Stock Operation
     MainMenu    210
     MainMenu    330
 
-Jatinangor Validate Stock Picking
     SelectListView    stock.picking    name=JTNGR/IN/${N_FAILURE}
     Button    stock.picking    oe_form_button_edit
 
@@ -61,6 +56,7 @@ Jatinangor Validate Stock Picking
     ButtonWizard    stock.pack.operation    save
 
     Button    stock.picking    do_new_transfer
+    WaitBeforeClose     stock.picking      do_new_transfer
     Close Browser
 
 Login as Gerlong
@@ -87,16 +83,14 @@ Gerlong Validate Stock Picking
     ButtonWizard    stock.pack.operation    save
 
     Button    stock.picking    do_new_transfer
+    WaitBeforeClose     stock.picking      do_new_transfer
     Close Browser
 
-Login as Jatinangor 2
+Jatinangor Validate Stock Picking 2
     LoginMember    jtngr@sakinahkerudung.com    ${ODOO_DB}
-
-Jatinangor Enter Inventory - SO Done
     MainMenu    210
     MainMenu    332
 
-Jatinangor Validate Stock Picking 2
     SelectListView    stock.picking    name=JTNGR/IN/${N_FAILURE}
     Button    stock.picking    oe_form_button_edit
     Button    stock.picking    action_cancel
@@ -118,18 +112,16 @@ Jatinangor Validate Stock Picking 2
     ButtonWizard    stock.pack.operation    save
 
     Button    stock.picking    do_new_transfer
+    WaitBeforeClose     stock.picking      do_new_transfer
     Close Browser
 
-Login as Gerlong 2
+Gerlong Validate Stock Picking 2
     LoginMember    gerlong@sakinahkerudung.com    ${ODOO_DB}
-
-Gerlong Enter Inventory - Stock Operation
     MainMenu    210
     MainMenu    330
 
-Gerlong Validate Stock Picking 2
     SelectListView    stock.picking    name=GRLNG/IN/${N_FAILURE}
-
     Button    stock.picking    do_new_transfer
-
     ButtonWizard    stock.backorder.confirmation    process_cancel_backorder
+    WaitBeforeClose     stock.backorder.confirmation    process_cancel_backorder
+    Close Browser

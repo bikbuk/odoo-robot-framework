@@ -75,7 +75,7 @@ Import Data
     Click Element   xpath=//label[@for='my-file-selector']
     Wait Until Element Is Enabled    xpath=//button[contains(text(),'Import')]      timeout=30min
     Click Button    xpath=//button[contains(text(),'Import')]
-    Wait Until Element Is Not Visible   xpath=//label[@for='my-file-selector']
+    Wait Until Element Is Not Visible   xpath=//label[@for='my-file-selector']      timeout=30min
     Close Browser
 
 

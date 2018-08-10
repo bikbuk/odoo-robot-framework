@@ -10,14 +10,11 @@ Suite Setup      Run Keywords      Set Up
 
 
 *** Test Cases ***
-Login as Riung
+Create Stock Picking Riung - Jatinangor
     LoginMember    riung@sakinahkerudung.com    ${ODOO_DB}
-
-Riung Enter Inventory - Stock Operation
 	MainMenu    210
     MainMenu    330
 
-Create Stock Picking Riung - Jatinangor
     Button    stock.picking    oe_list_add
     Many2OneSelect    stock.picking    warehouse_src_id    Riung
     Many2OneSelect    stock.picking    warehouse_dest_id    Jatinangor
@@ -36,16 +33,15 @@ Create Stock Picking Riung - Jatinangor
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
+    WaitBeforeClose     stock.picking      action_assign
+    Close Browser
 
-Login as Jatinagor
+Jatinagor Validate Stock Picking
     LoginMember    jtngr@sakinahkerudung.com    ${ODOO_DB}
-
-Jatinangor Enter Inventory - Stock Operation
     MainMenu    210
     MainMenu    330
 
-Jatinagor Validate Stock Picking
-    SelectListView    stock.picking    name=JTNGR/IN/00003
+    SelectListView    stock.picking    name=JTNGR/IN/${N_FAILURE}
 
     ClickPencil    [0051] Parfum
     FloatWizard    stock.pack.operation    qty_done    5.0
@@ -60,3 +56,5 @@ Jatinagor Validate Stock Picking
     ButtonWizard    stock.pack.operation    save
 
     Button    stock.picking    do_new_transfer
+    WaitBeforeClose     stock.picking      do_new_transfer
+    Close Browser
