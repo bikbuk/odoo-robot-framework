@@ -7,9 +7,7 @@ Variables      ../Resources/config.py
 Library        Collections
 Library        SeleniumLibrary
 
-
 Suite Setup      Run Keywords      Set Up
-
 
 *** Test Cases ***
 Login as Gudang
@@ -41,19 +39,10 @@ Create Stock Picking Gudang - Riung
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
-    WaitBeforeClose     stock.picking   action_assign
 
-    ClickPencil    [0051] Parfum
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0055] Tempat Peniti
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0056] Tas Selendang
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
+    ClickPencil    [0051] Parfum    5.0
+    ClickPencil    [0055] Tempat Peniti     5.0
+    ClickPencil    [0056] Tas Selendang     5.0
 
     Button    stock.picking    do_new_transfer
     MainMenu    331
@@ -78,19 +67,10 @@ Create Stock Picking Gudang - Jatinangor
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
-    WaitBeforeClose     stock.picking   action_assign
 
-    ClickPencil    [0051] Parfum
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0055] Tempat Peniti
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0056] Tas Selendang
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
+    ClickPencil    [0051] Parfum    5.0
+    ClickPencil    [0055] Tempat Peniti     5.0
+    ClickPencil    [0056] Tas Selendang     5.0
 
     Button    stock.picking    do_new_transfer
     MainMenu    331
@@ -115,19 +95,10 @@ Create Stock Picking Gudang - Gerlong
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
-    WaitBeforeClose     stock.picking   action_assign
 
-    ClickPencil    [0051] Parfum
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0055] Tempat Peniti
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0056] Tas Selendang
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
+    ClickPencil    [0051] Parfum    5.0
+    ClickPencil    [0055] Tempat Peniti     5.0
+    ClickPencil    [0056] Tas Selendang     5.0
 
     Button    stock.picking    do_new_transfer
     WaitBeforeClose     stock.picking      do_new_transfer
@@ -138,20 +109,12 @@ Riung Receive Stock From Gudang
     MainMenu    210
     MainMenu    330
 
-    SelectListView    stock.picking    name=RIUNG/IN/${N_FAILURE}
+    SelectListView    stock.picking    name=RIUNG/IN/00001
     Button    stock.picking    oe_form_button_edit
 
-    ClickPencil    [0051] Parfum
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0055] Tempat Peniti
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0056] Tas Selendang
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
+    ClickPencil    [0051] Parfum    5.0
+    ClickPencil    [0055] Tempat Peniti     5.0
+    ClickPencil    [0056] Tas Selendang     5.0
 
     Button    stock.picking    do_new_transfer
     WaitBeforeClose     stock.picking      do_new_transfer
@@ -161,21 +124,13 @@ Jatinangor Receive Stock From Gudang
     LoginMember    jtngr@sakinahkerudung.com    ${ODOO_DB}
     MainMenu    210
     MainMenu    330
-
-    SelectListView    stock.picking    name=JTNGR/IN/${N_FAILURE}
+    
+    SelectListView    stock.picking    name=JTNGR/IN/00001
     Button    stock.picking    oe_form_button_edit
 
-    ClickPencil    [0051] Parfum
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0055] Tempat Peniti
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0056] Tas Selendang
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
+    ClickPencil    [0051] Parfum    5.0
+    ClickPencil    [0055] Tempat Peniti     5.0
+    ClickPencil    [0056] Tas Selendang     5.0
 
     Button    stock.picking    do_new_transfer
     WaitBeforeClose     stock.picking      do_new_transfer
@@ -185,21 +140,13 @@ Gerlong Receive Stock From Gudang
     LoginMember    gerlong@sakinahkerudung.com    ${ODOO_DB}
     MainMenu    210
     MainMenu    330
-
-    SelectListView    stock.picking    name=GRLNG/IN/${N_FAILURE}
+   
+    SelectListView    stock.picking    name=GRLNG/IN/00001
     Button    stock.picking    oe_form_button_edit
 
-    ClickPencil    [0051] Parfum
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0055] Tempat Peniti
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0056] Tas Selendang
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
+    ClickPencil    [0051] Parfum    5.0
+    ClickPencil    [0055] Tempat Peniti     5.0
+    ClickPencil    [0056] Tas Selendang     5.0
 
     Button    stock.picking    do_new_transfer
     WaitBeforeClose     stock.picking      do_new_transfer

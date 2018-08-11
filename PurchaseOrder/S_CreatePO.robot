@@ -22,6 +22,7 @@ Comisionare Make Purchase Order
     Click Element    xpath=//button[@class='btn btn-default o_attach']
     Wait Until Page Contains Element    xpath=//div[@class='oe_attachment']    999
     Button    purchase.order    oe_form_button_save
+    ${NUMBER_1}=    Get Text    xpath=//h1/span[contains(@class,'o_form_required') and contains(@class,'o_form_field')]  
     WaitBeforeClose     purchase.order      oe_form_button_save
     Close Browser
 
@@ -56,20 +57,12 @@ Gudang Receive Purchased Stock
     LoginMember    gudang@sakinahkerudung.com    ${ODOO_DB}
     MainMenu    210
     MainMenu    331
-
+    
     SelectListView    stock.picking    origin=PO${N_FAILURE}
 
-    ClickPencil    [0051] Parfum
-    FloatWizard    stock.pack.operation    qty_done    50.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0055] Tempat Peniti
-    FloatWizard    stock.pack.operation    qty_done    50.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0056] Tas Selendang
-    FloatWizard    stock.pack.operation    qty_done    50.0
-    ButtonWizard    stock.pack.operation    save
+    ClickPencil    [0051] Parfum    50.0
+    ClickPencil    [0055] Tempat Peniti     50.0
+    ClickPencil    [0056] Tas Selendang     50.0
 
     Button    stock.picking    do_new_transfer
     WaitBeforeClose     stock.picking   do_new_transfer
@@ -87,7 +80,7 @@ Accounting Make and Pay Bills
     Button    account.invoice    144
     PaymentJournal  account.payment    journal_id    Bank (IDR)
     ButtonWizard    account.payment    post
-    WaitBeforeClose     account.payment     post
+    WaitBeforeClose     account.invoice    144
     MainMenu    294
     PurchaseKanbanBox    PO${N_FAILURE}
     ButtonWizard    purchase.order    button_done

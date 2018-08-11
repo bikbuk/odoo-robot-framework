@@ -38,8 +38,11 @@ LoginMember   [Arguments]    ${user}    ${db}
     Input Password  name=password   go50cabang
     Click Button    xpath=//div[contains(@class,'oe_login_buttons')]/button[@type='submit']
 
-ClickPencil    [Arguments]    ${product}
-    Click Element    xpath=//td[@data-field='product_id' and normalize-space(string())=normalize-space('${product}')]/following::i
+ClickPencil    [Arguments]    ${product}    ${qty_done}
+    Modal   Click Element    xpath=//td[@data-field='product_id' and normalize-space(string())=normalize-space('${product}')]/following::i
+    FloatWizard    stock.pack.operation    qty_done    ${qty_done}
+    ButtonWizard    stock.pack.operation    save
+    ElementPostCheck
 
 Many2OneCreate  [Arguments]     ${model}    ${field}
     SelectNotebook  xpath=//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
@@ -64,6 +67,10 @@ EditPopUpWindow
     Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
     Click Button    xpath=//div[@class='modal-footer']/button[contains(@class,'o_form_button_edit')]
 
+OKPopUpWindow
+    Wait Until Page Contains Element    xpath=//div[contains(@class,'o_cp_pager')]
+    Click Button    xpath=//div[@class='modal-footer']/button[@type_data_is='WidgetButton']
+
 PaymentJournal     [Arguments]     ${model}    ${field}    ${value}
     SelectNotebook  xpath=//select[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
     Click Element  xpath=//div[contains(@div,modal)]//select[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
@@ -71,7 +78,7 @@ PaymentJournal     [Arguments]     ${model}    ${field}    ${value}
     ElementPostCheck
 
 WaitBeforeClose     [Arguments]     ${model}        ${button_name}
-    Wait Until Element Is Not Visible     xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}' and not(contains(@class,'o_form_invisible'))]
+    Wait Until Element Is Not Visible     xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}']
 
 ButtonConfig        [Arguments]     ${model}=       ${button_name}= ${class}=
     Run Keyword Unless  '${model}' == ''    Modal   Focus   xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}' and not(contains(@class,'o_form_invisible'))]

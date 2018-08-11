@@ -6,7 +6,7 @@
 SELENIUM_DELAY = 0
 
 # How long a "Wait Until ..." command should wait
-SELENIUM_TIMEOUT = 30
+SELENIUM_TIMEOUT = 10
 BROWSER = "ff"
 Marionette= True
 
@@ -24,4 +24,6 @@ ODOO_DB_PASSWORD = ""
 ODOO_DB_PORT = "5432"
 
 # Other data
-N_FAILURE = "00001" 
+N_FAILURE = "00003"
+
+

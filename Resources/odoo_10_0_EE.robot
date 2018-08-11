@@ -232,7 +232,7 @@ Float	[Arguments]	${model}	${field}	${value}
 	ElementPostCheck
 
 X2Many-Float	[Arguments]		${model}	${field}	${value}
-	Modal	Click Element 	 	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']
+	Modal	Click Element 	 xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']
 	Modal	Input Text	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']	value=${value}
 	Modal	Press Key	xpath=//input[ancestor::div[contains(@class, 'o_view_manager_content') and contains(@class, 'o_form_field')] and @data-bt-testing-name='${field}']	value=\\09
 	ElementPostCheck
@@ -328,6 +328,7 @@ One2ManySelectRecord	[Arguments]	${model}	${field}	${submodel}	@{fields}
 
 
 SelectListView	[Arguments]		${model}	@{fields}
+	Set Selenium Speed  1
 	# Initialize variable
 	${xpath}=	Set Variable
 
@@ -353,6 +354,7 @@ SelectListView	[Arguments]		${model}	@{fields}
 	${xpath}=	Catenate	(//table[contains(@class,'o_list_view')]//tr[${xpath}]/td[not(contains(@class,'o_list_record_selector'))])[1]
 	Click Element	xpath=${xpath}
 	ElementPostCheck
+	Set Selenium Speed  0
 
 SidebarActionOld  [Arguments]	${type}	${id}
 	# open the menu
