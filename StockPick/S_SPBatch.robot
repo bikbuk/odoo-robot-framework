@@ -27,24 +27,21 @@ Create Stock Picking Gudang - Riung
 
     NewOne2Many    stock.picking    move_lines
     X2Many-Many2OneSelect    stock.move    product_id    [0051] Parfum
-    X2Many-Float    stock.move    product_uom_qty    5.0
+    X2Many-Float    stock.move    product_uom_qty    20.0
 
     NewOne2Many    stock.picking    move_lines
     X2Many-Many2OneSelect    stock.move    product_id    [0055] Tempat Peniti
-    X2Many-Float    stock.move    product_uom_qty    5.0
+    X2Many-Float    stock.move    product_uom_qty    20.0
 
     NewOne2Many    stock.picking    move_lines
     X2Many-Many2OneSelect    stock.move    product_id    [0056] Tas Selendang
-    X2Many-Float    stock.move    product_uom_qty    5.0
+    X2Many-Float    stock.move    product_uom_qty    20.0
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
-
-    ClickPencil    [0051] Parfum    5.0
-    ClickPencil    [0055] Tempat Peniti     5.0
-    ClickPencil    [0056] Tas Selendang     5.0
-
     Button    stock.picking    do_new_transfer
+    Button      stock.immediate.transfer    process
+    WaitBeforeClose     stock.picking    do_new_transfer
     MainMenu    331
 
 Create Stock Picking Gudang - Jatinangor
@@ -67,12 +64,9 @@ Create Stock Picking Gudang - Jatinangor
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
-
-    ClickPencil    [0051] Parfum    5.0
-    ClickPencil    [0055] Tempat Peniti     5.0
-    ClickPencil    [0056] Tas Selendang     5.0
-
     Button    stock.picking    do_new_transfer
+    Button      stock.immediate.transfer    process
+    WaitBeforeClose     stock.picking    do_new_transfer
     MainMenu    331
 
 Create Stock Picking Gudang - Gerlong
@@ -95,13 +89,9 @@ Create Stock Picking Gudang - Gerlong
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
-
-    ClickPencil    [0051] Parfum    5.0
-    ClickPencil    [0055] Tempat Peniti     5.0
-    ClickPencil    [0056] Tas Selendang     5.0
-
     Button    stock.picking    do_new_transfer
-    WaitBeforeClose     stock.picking      do_new_transfer
+    Button      stock.immediate.transfer    process
+    WaitBeforeClose     stock.picking    do_new_transfer
     Close Browser
 
 Riung Receive Stock From Gudang
@@ -110,14 +100,10 @@ Riung Receive Stock From Gudang
     MainMenu    330
 
     SelectListView    stock.picking    name=RIUNG/IN/00001
-    Button    stock.picking    oe_form_button_edit
-
-    ClickPencil    [0051] Parfum    5.0
-    ClickPencil    [0055] Tempat Peniti     5.0
-    ClickPencil    [0056] Tas Selendang     5.0
 
     Button    stock.picking    do_new_transfer
-    WaitBeforeClose     stock.picking      do_new_transfer
+    Button      stock.immediate.transfer    process
+    WaitBeforeClose     stock.picking    do_new_transfer
     Close Browser
 
 Jatinangor Receive Stock From Gudang
@@ -126,14 +112,10 @@ Jatinangor Receive Stock From Gudang
     MainMenu    330
     
     SelectListView    stock.picking    name=JTNGR/IN/00001
-    Button    stock.picking    oe_form_button_edit
-
-    ClickPencil    [0051] Parfum    5.0
-    ClickPencil    [0055] Tempat Peniti     5.0
-    ClickPencil    [0056] Tas Selendang     5.0
 
     Button    stock.picking    do_new_transfer
-    WaitBeforeClose     stock.picking      do_new_transfer
+    Button      stock.immediate.transfer    process
+    WaitBeforeClose     stock.picking    do_new_transfer
     Close Browser
 
 Gerlong Receive Stock From Gudang
@@ -142,12 +124,8 @@ Gerlong Receive Stock From Gudang
     MainMenu    330
    
     SelectListView    stock.picking    name=GRLNG/IN/00001
-    Button    stock.picking    oe_form_button_edit
-
-    ClickPencil    [0051] Parfum    5.0
-    ClickPencil    [0055] Tempat Peniti     5.0
-    ClickPencil    [0056] Tas Selendang     5.0
 
     Button    stock.picking    do_new_transfer
-    WaitBeforeClose     stock.picking      do_new_transfer
+    Button      stock.immediate.transfer    process
+    WaitBeforeClose     stock.picking    do_new_transfer
     Close Browser

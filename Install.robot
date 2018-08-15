@@ -50,7 +50,7 @@ Install Modules
     Wait Until Element Is Visible   xpath=//a[@data-menu='5']       timeout=30min
     MainMenu    5
     Click Element   xpath=//div[contains(@class,'o_kanban_view')]/div[3]/div[@class='oe_module_desc']/button
-    Wait Until Element Is Not Visible   xpath=//div[contains(@class,'o_kanban_view')]/div[3]/div[@class='oe_module_desc']/button    timeout=30min
+    Wait Until Page Does Not Contain Element   xpath=//div[contains(@class,'o_kanban_view')]/div[3]/div[@class='oe_module_desc']/button    timeout=30min
 Import Data
     BackToMainMenu
     MainMenu    278
@@ -62,9 +62,10 @@ Import Data
     Click Element   xpath=//label[@for='my-file-selector']
     Wait Until Element Is Enabled    xpath=//button[contains(text(),'Import')]      timeout=30min
     Click Button    xpath=//button[contains(text(),'Import')]
-    Wait Until Element Is Not Visible   xpath=//label[@for='my-file-selector']      timeout=30min
+    Wait Until Page Does Not Contain Element   xpath=//label[@for='my-file-selector']      timeout=30min
     BackToMainMenu
     MainMenu    210
+    Click Element   xpath=//li[@class='o_extra_menu_items']/a
     Click Element   xpath=//li[@class='o_extra_menu_items']/a
     SubSubMenu  249
     Wait Until Element Is Visible   xpath=//div[contains(@class,'oe_kanban_global_click')]
@@ -75,7 +76,7 @@ Import Data
     Click Element   xpath=//label[@for='my-file-selector']
     Wait Until Element Is Enabled    xpath=//button[contains(text(),'Import')]      timeout=30min
     Click Button    xpath=//button[contains(text(),'Import')]
-    Wait Until Element Is Not Visible   xpath=//label[@for='my-file-selector']      timeout=30min
+    Wait Until Page Does Not Contain Element   xpath=//label[@for='my-file-selector']      timeout=30min
     Close Browser
 
 

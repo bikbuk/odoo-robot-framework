@@ -72,13 +72,17 @@ OKPopUpWindow
     Click Button    xpath=//div[@class='modal-footer']/button[@type_data_is='WidgetButton']
 
 PaymentJournal     [Arguments]     ${model}    ${field}    ${value}
+    Set Selenium Speed  0.5
     SelectNotebook  xpath=//select[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
     Click Element  xpath=//div[contains(@div,modal)]//select[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
     Click Element  xpath=//div[contains(@div,modal)]//select[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']/option[contains(text(), '${value}')]
     ElementPostCheck
+    Set Selenium Speed  ${SELENIUM_DELAY}
 
 WaitBeforeClose     [Arguments]     ${model}        ${button_name}
+    Set Selenium Speed  0
     Wait Until Element Is Not Visible     xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}']
+    Set Selenium Speed  ${SELENIUM_DELAY}
 
 ButtonConfig        [Arguments]     ${model}=       ${button_name}= ${class}=
     Run Keyword Unless  '${model}' == ''    Modal   Focus   xpath=//button[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${button_name}' and not(contains(@class,'o_form_invisible'))]

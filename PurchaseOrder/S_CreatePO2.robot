@@ -31,7 +31,7 @@ Acc Input Items in Purchase Order
     MainMenu    278
     MainMenu    294
 
-    PurchaseKanbanBox    PO${N_FAILURE}
+    PurchaseKanbanBox    PO${N_FAILURE2}
     Button    purchase.order    oe_form_button_edit
 
     NewOne2Many    purchase.order    order_line
@@ -58,11 +58,44 @@ Gudang Receive Purchased Stock
     MainMenu    210
     MainMenu    331
     
-    SelectListView    stock.picking    origin=PO${N_FAILURE}
+    SelectListView    stock.picking    origin=PO${N_FAILURE2}
 
-    Button      stock.picking    do_new_transfer
-    Button      stock.immediate.transfer    process
-    WaitBeforeClose     stock.picking    do_new_transfer
+    ClickPencil    [0051] Parfum    90.0
+    ClickPencil    [0055] Tempat Peniti     100.0
+    ClickPencil    [0056] Tas Selendang     100.0
+
+    Button    stock.picking    do_new_transfer
+    OKPopUpWindow
+    Close Browser
+
+Accounting Chage Purchased Amount
+    LoginMember    acc@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    278
+    MainMenu    294
+
+    PurchaseKanbanBox    PO${N_FAILURE2}
+    Button    purchase.order    button_cancel
+    Button    purchase.order    oe_form_button_edit
+    One2ManySelectRecord    purchase.order   order_line  purchase.order.line   product_id=[0051] Parfum
+    X2Many-Float    purchase.order   product_qty     90.0
+    Button    purchase.order    button_draft
+    Button    purchase.order    button_confirm
+    WaitBeforeClose     purchase.order      button_confirm
+    Close Browser
+
+Gudang Receive Purchased Stock After Fixed
+    LoginMember    gudang@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    210
+    MainMenu    331
+    
+    SelectListView    stock.picking    origin=PO${N_FAILURE2}
+
+    ClickPencil    [0051] Parfum    90.0
+    ClickPencil    [0055] Tempat Peniti     100.0
+    ClickPencil    [0056] Tas Selendang     100.0
+
+    Button    stock.picking    do_new_transfer
+    WaitBeforeClose    stock.picking    do_new_transfer
     Close Browser
 
 Accounting Make and Pay Bills
@@ -70,7 +103,7 @@ Accounting Make and Pay Bills
     MainMenu    278
     MainMenu    294
 
-    PurchaseKanbanBox    PO${N_FAILURE}
+    PurchaseKanbanBox    PO${N_FAILURE2}
     Button    purchase.order    action_view_invoice
     Button    account.invoice    oe_list_add
     Button    account.invoice    action_invoice_open
@@ -79,7 +112,7 @@ Accounting Make and Pay Bills
     ButtonWizard    account.payment    post
     WaitBeforeClose     account.invoice    144
     MainMenu    294
-    PurchaseKanbanBox    PO${N_FAILURE}
+    PurchaseKanbanBox    PO${N_FAILURE2}
     ButtonWizard    purchase.order    button_done
     WaitBeforeClose     purchase.order    button_done
     Close Browser

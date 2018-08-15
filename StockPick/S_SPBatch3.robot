@@ -40,6 +40,7 @@ Create Stock Picking Gudang - Riung
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
+
     Button    stock.picking    do_new_transfer
     Button      stock.immediate.transfer    process
     WaitBeforeClose     stock.picking    do_new_transfer
@@ -65,6 +66,7 @@ Create Stock Picking Gudang - Jatinangor
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
+
     Button    stock.picking    do_new_transfer
     Button      stock.immediate.transfer    process
     WaitBeforeClose     stock.picking    do_new_transfer
@@ -90,9 +92,10 @@ Create Stock Picking Gudang - Gerlong
 
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
+
     Button    stock.picking    do_new_transfer
     Button      stock.immediate.transfer    process
-    WaitBeforeClose     stock.picking    do_new_transfer    
+    WaitBeforeClose     stock.picking    do_new_transfer
     Close Browser
 
 Riung Validate Stock Picking
@@ -100,11 +103,11 @@ Riung Validate Stock Picking
 	MainMenu    210
     MainMenu    330
 
-    SelectListView    stock.picking    name=RIUNG/IN/00002
+    SelectListView    stock.picking    name=RIUNG/IN/00003
 
     Button    stock.picking    do_new_transfer
     Button      stock.immediate.transfer    process
-    WaitBeforeClose     stock.immediate.transfer    process
+    WaitBeforeClose     stock.picking    do_new_transfer
     Close Browser
 
 Jatinangor Validate Stock Picking
@@ -112,7 +115,7 @@ Jatinangor Validate Stock Picking
     MainMenu    210
     MainMenu    330
 
-    SelectListView    stock.picking    name=JTNGR/IN/00002
+    SelectListView    stock.picking    name=JTNGR/IN/00003
 
     Button    stock.picking    do_new_transfer
     Button      stock.immediate.transfer    process
@@ -124,11 +127,11 @@ Gerlong Validate Stock Picking
     MainMenu    210
     MainMenu    330
 
-    SelectListView    stock.picking    name=GRLNG/IN/00002
+    SelectListView    stock.picking    name=GRLNG/IN/00004
 
-    ClickPencil    [0051] Parfum    4.0
+    ClickPencil    [0051] Parfum    6.0
     ClickPencil    [0055] Tempat Peniti     5.0
-    ClickPencil    [0056] Tas Selendang     4.0
+    ClickPencil    [0056] Tas Selendang     6.0
 
     Button    stock.picking    do_new_transfer
     OKPopUpWindow
@@ -139,18 +142,19 @@ Jatinangor Validate Stock Picking 2
     MainMenu    210
     MainMenu    332
 
-    SelectListView    stock.picking    name=JTNGR/IN/00002
+    SelectListView    stock.picking    name=JTNGR/IN/00003
     Button    stock.picking    oe_form_button_edit
     Button    stock.picking    action_cancel
     Button    stock.picking    action_confirm
     Button    stock.picking    action_assign
 
-    ClickPencil    [0051] Parfum    6.0
+    ClickPencil    [0051] Parfum    4.0
     ClickPencil    [0055] Tempat Peniti     5.0
-    ClickPencil    [0056] Tas Selendang     6.0
+    ClickPencil    [0056] Tas Selendang     4.0
 
     Button    stock.picking    do_new_transfer
-    WaitBeforeClose     stock.picking      do_new_transfer
+    ButtonWizard    stock.backorder.confirmation    process_cancel_backorder
+    WaitBeforeClose     stock.backorder.confirmation    process_cancel_backorder
     Close Browser
 
 Gerlong Validate Stock Picking 2
@@ -158,8 +162,7 @@ Gerlong Validate Stock Picking 2
     MainMenu    210
     MainMenu    330
 
-    SelectListView    stock.picking    name=GRLNG/IN/00002
+    SelectListView    stock.picking    name=GRLNG/IN/00004
     Button    stock.picking    do_new_transfer
-    ButtonWizard    stock.backorder.confirmation    process_cancel_backorder
-    WaitBeforeClose     stock.backorder.confirmation    process_cancel_backorder
+    WaitBeforeClose     stock.picking      do_new_transfer
     Close Browser

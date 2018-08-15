@@ -10,7 +10,7 @@ Suite Setup      Run Keywords      Set Up
 
 
 *** Test Cases ***
-Create Stock Picking Riung - Jatinangor
+Create Stock Picking From Riung To Jatinangor
     LoginMember    riung@sakinahkerudung.com    ${ODOO_DB}
 	MainMenu    210
     MainMenu    330
@@ -32,29 +32,154 @@ Create Stock Picking Riung - Jatinangor
     X2Many-Float    stock.move    product_uom_qty    5.0
 
     Button    stock.picking    action_confirm
-    Button    stock.picking    action_assign
+    Button    stock.picking    action_assign 
     WaitBeforeClose     stock.picking      action_assign
-    Close Browser
+    Close Browser   
 
-Jatinagor Validate Stock Picking
+Jatinagor Validate Stock Picking From Riung
     LoginMember    jtngr@sakinahkerudung.com    ${ODOO_DB}
     MainMenu    210
     MainMenu    330
 
-    SelectListView    stock.picking    name=JTNGR/IN/${N_FAILURE}
-
-    ClickPencil    [0051] Parfum
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0055] Tempat Peniti
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
-
-    ClickPencil    [0056] Tas Selendang
-    FloatWizard    stock.pack.operation    qty_done    5.0
-    ButtonWizard    stock.pack.operation    save
+    SelectListView    stock.picking    name=JTNGR/IN/00006
 
     Button    stock.picking    do_new_transfer
-    WaitBeforeClose     stock.picking      do_new_transfer
+    Button      stock.immediate.transfer    process
+    WaitBeforeClose     stock.picking    do_new_transfer
     Close Browser
+
+Create Stock Picking From Riung To Jatinangor 2nd
+    LoginMember    riung@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    210
+    MainMenu    330
+
+    Button    stock.picking    oe_list_add
+    Many2OneSelect    stock.picking    warehouse_src_id    Riung
+    Many2OneSelect    stock.picking    warehouse_dest_id    Jatinangor
+
+    NewOne2Many    stock.picking    move_lines
+    X2Many-Many2OneSelect    stock.move    product_id    [0051] Parfum
+    X2Many-Float    stock.move    product_uom_qty    5.0
+
+    NewOne2Many    stock.picking    move_lines
+    X2Many-Many2OneSelect    stock.move    product_id    [0055] Tempat Peniti
+    X2Many-Float    stock.move    product_uom_qty    5.0
+
+    NewOne2Many    stock.picking    move_lines
+    X2Many-Many2OneSelect    stock.move    product_id    [0056] Tas Selendang
+    X2Many-Float    stock.move    product_uom_qty    5.0
+
+    Button    stock.picking    action_confirm
+    ${sp_number}=   Get Text    xpath=//h1[@class='hidden-xs']/span
+    Button    stock.picking    action_assign
+    WaitBeforeClose     stock.picking      action_assign
+    Close Browser
+
+Jatinagor Validate Stock Picking From Riung With Difference Amount Received (-)
+    LoginMember    jtngr@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    210
+    MainMenu    330
+
+    SelectListView    stock.picking    name=JTNGR/IN/00007
+
+    ClickPencil    [0051] Parfum    4.0
+    ClickPencil    [0055] Tempat Peniti     5.0
+    ClickPencil    [0056] Tas Selendang     5.0
+
+    Button    stock.picking    do_new_transfer
+    OKPopUpWindow
+    Close Browser
+
+Riung Correct The Stock Picking To Jatinangor
+    LoginMember    riung@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    210
+    MainMenu    330
+
+    SelectListView    stock.picking    name=JTNGR/IN/00007
+
+    Button      stock.picking   oe_form_button_edit
+    One2ManySelectRecord    stock.picking   pack_operation_product_ids  stock.pack.operation   product_id=[0051] Parfum
+    X2Many-Float    stock.picking   product_qty     4.0
+    Button      stock.picking   oe_form_button_save
+    WaitBeforeClose     stock.picking      oe_form_button_save
+    Close Browser
+
+Jatinagor Validate Stock Picking After Correction
+    LoginMember    jtngr@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    210
+    MainMenu    330
+
+    SelectListView    stock.picking    name=JTNGR/IN/00007
+
+    Button    stock.picking    do_new_transfer
+    ButtonWizard    stock.backorder.confirmation    process_cancel_backorder
+    WaitBeforeClose     stock.backorder.confirmation      process_cancel_backorder
+    Close Browser
+
+Create Stock Picking From Riung To Jatinangor 3rd
+    LoginMember    riung@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    210
+    MainMenu    330
+
+    Button    stock.picking    oe_list_add
+    Many2OneSelect    stock.picking    warehouse_src_id    Riung
+    Many2OneSelect    stock.picking    warehouse_dest_id    Jatinangor
+
+    NewOne2Many    stock.picking    move_lines
+    X2Many-Many2OneSelect    stock.move    product_id    [0051] Parfum
+    X2Many-Float    stock.move    product_uom_qty    5.0
+
+    NewOne2Many    stock.picking    move_lines
+    X2Many-Many2OneSelect    stock.move    product_id    [0055] Tempat Peniti
+    X2Many-Float    stock.move    product_uom_qty    5.0
+
+    NewOne2Many    stock.picking    move_lines
+    X2Many-Many2OneSelect    stock.move    product_id    [0056] Tas Selendang
+    X2Many-Float    stock.move    product_uom_qty    5.0
+
+    Button    stock.picking    action_confirm
+    ${sp_number}=   Get Text    xpath=//h1[@class='hidden-xs']/span
+    Button    stock.picking    action_assign
+    WaitBeforeClose     stock.picking      action_assign
+    Close Browser
+
+Jatinagor Validate Stock Picking From Riung With Difference Amount Received (+)
+    LoginMember    jtngr@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    210
+    MainMenu    330
+
+    SelectListView    stock.picking    name=JTNGR/IN/00009
+
+    ClickPencil    [0051] Parfum    6.0
+    ClickPencil    [0055] Tempat Peniti     5.0
+    ClickPencil    [0056] Tas Selendang     5.0
+
+    Button    stock.picking    do_new_transfer
+    OKPopUpWindow
+    Close Browser
+
+Riung Correct The Stock Picking To Jatinangor Again
+    LoginMember    riung@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    210
+    MainMenu    330
+
+    SelectListView    stock.picking    name=JTNGR/IN/00009
+
+    Button      stock.picking   oe_form_button_edit
+    One2ManySelectRecord    stock.picking   pack_operation_product_ids  stock.pack.operation   product_id=[0051] Parfum
+    X2Many-Float    stock.picking   product_qty     6.0
+    Button      stock.picking   oe_form_button_save
+    WaitBeforeClose     stock.picking      oe_form_button_save
+    Close Browser
+
+Jatinagor Validate Stock Picking After Correction Again
+    LoginMember    jtngr@sakinahkerudung.com    ${ODOO_DB}
+    MainMenu    210
+    MainMenu    330
+
+    SelectListView    stock.picking    name=JTNGR/IN/00009
+
+    Button    stock.picking    do_new_transfer
+    WaitBeforeClose     stock.picking    do_new_transfer
+    Close Browser
+

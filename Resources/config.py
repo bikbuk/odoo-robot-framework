@@ -3,10 +3,10 @@
 # Selenium
 
 # Time till the next command is executed
-SELENIUM_DELAY = 0
+SELENIUM_DELAY = 0.1
 
 # How long a "Wait Until ..." command should wait
-SELENIUM_TIMEOUT = 10
+SELENIUM_TIMEOUT = 30
 BROWSER = "ff"
 Marionette= True
 
@@ -14,7 +14,7 @@ Marionette= True
 SERVER = "localhost"
 ODOO_PORT = "8069"
 ODOO_URL = "http://" + SERVER + ":" + ODOO_PORT
-ODOO_DB = "demo"
+ODOO_DB = "the"
 USER = "admin"
 PASSWORD = "admin"
 
@@ -24,6 +24,8 @@ ODOO_DB_PASSWORD = ""
 ODOO_DB_PORT = "5432"
 
 # Other data
-N_FAILURE = "00003"
-
+N_FAILURE = "00001"
+N_FAILURE2 = "00002"
+N_FAILURE3 = "00003"
+N_FAILURE4 = "00004"
 

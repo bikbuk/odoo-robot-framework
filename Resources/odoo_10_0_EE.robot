@@ -288,17 +288,17 @@ NewOne2Many	[Arguments]	${model}	${field}
 	Click element	xpath=(//div[contains(@class,'o_form_field') and contains(@class, 'o_view_manager_content') and descendant::div[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']]//td[contains(@class,'o_form_field_x2many_list_row_add')]/a)[last()]
 	ElementPostCheck
 
-One2ManySelectRecord	[Arguments]	${model}	${field}	${submodel}	@{fields}
+One2ManySelectRecord	[Arguments]		${model}	${field}	${submodel}		@{fields}
 	SelectNotebook	xpath=//div[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
 
 	# Initialize variable
-	${pre_check_xpath}=	Set Variable
+	${pre_check_xpath}=		Set Variable
 	${post_check_xpath}=	Set Variable
-	${pre_click_xpath}=	Set Variable
+	${pre_click_xpath}=		Set Variable
 	${post_click_xpath}=	Set Variable
-	${pre_check_xpath}=	Catenate	(//div[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']//table[contains(@class,'oe_list_content')]//tr[descendant::td[
-	${post_check_xpath}=	Catenate	]])[1]
-	${pre_click_xpath}=	Catenate	(//div[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']//table[contains(@class,'oe_list_content')]//tr[
+	${pre_check_xpath}=		Catenate	(//div[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']//following-sibling::div[1]//table[contains(@class,'o_list_view')]//tr[descendant::td[
+	${post_check_xpath}=	Catenate 	]])[1]
+	${pre_click_xpath}=		Catenate	(//div[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']//following-sibling::div[1]//table[contains(@class,'o_list_view')]//tr[
 	${post_click_xpath}=	Catenate	]/td)[1]
 	${xpath}=	Set Variable
 
@@ -312,7 +312,6 @@ One2ManySelectRecord	[Arguments]	${model}	${field}	${submodel}	@{fields}
 	# otherwise a single field can break the whole command
 
 	\	${checkxpath}=	Catenate	${pre_check_xpath} ${fieldxpath} ${post_check_xpath}
-	\	Log To Console	${checkxpath}
 	\	${status}	${value}=	Run Keyword And Ignore Error	Page Should Contain Element	xpath=${checkxpath}
 
 	# In case the field is not there, log a error
@@ -354,7 +353,7 @@ SelectListView	[Arguments]		${model}	@{fields}
 	${xpath}=	Catenate	(//table[contains(@class,'o_list_view')]//tr[${xpath}]/td[not(contains(@class,'o_list_record_selector'))])[1]
 	Click Element	xpath=${xpath}
 	ElementPostCheck
-	Set Selenium Speed  0
+	Set Selenium Speed  ${SELENIUM_DELAY}
 
 SidebarActionOld  [Arguments]	${type}	${id}
 	# open the menu
