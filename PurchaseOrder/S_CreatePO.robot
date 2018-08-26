@@ -59,6 +59,9 @@ Gudang Receive Purchased Stock
     MainMenu    331
     
     SelectListView    stock.picking    origin=PO${N_FAILURE}
+    Button    stock.picking    oe_form_button_edit
+    Many2OneCreate      stock.picking   parent_batch
+    SavePopUpWindow
 
     Button      stock.picking    do_new_transfer
     Button      stock.immediate.transfer    process

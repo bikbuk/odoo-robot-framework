@@ -1,7 +1,3 @@
 Install.robot
 PurchaseOrder/S_CreatePO.robot
-StockPick/S_SPBatch.robot
-StockPick/S_SPBatch2.robot
-StockPick/S_SPBatch3.robot
-StockPick/S_SPBatch4.robot
-StockPick/S_SPShop.robot
+PurchaseOrder/S_CreatePO2.robot

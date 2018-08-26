@@ -59,6 +59,9 @@ Gudang Receive Purchased Stock
     MainMenu    331
     
     SelectListView    stock.picking    origin=PO${N_FAILURE2}
+    Button    stock.picking    oe_form_button_edit
+    Many2OneCreate      stock.picking   parent_batch
+    SavePopUpWindow
 
     ClickPencil    [0051] Parfum    90.0
     ClickPencil    [0055] Tempat Peniti     100.0
@@ -89,6 +92,9 @@ Gudang Receive Purchased Stock After Fixed
     MainMenu    331
     
     SelectListView    stock.picking    origin=PO${N_FAILURE2}
+    Button    stock.picking    oe_form_button_edit
+    Many2OneCreate      stock.picking   parent_batch
+    SavePopUpWindow
 
     ClickPencil    [0051] Parfum    90.0
     ClickPencil    [0055] Tempat Peniti     100.0

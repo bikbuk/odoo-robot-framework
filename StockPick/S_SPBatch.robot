@@ -17,10 +17,7 @@ Login as Gudang
 
 Create Stock Picking Gudang - Riung
     Button    stock.picking    oe_list_add
-    Many2OneCreate      stock.picking   parent_batch
-    SavePopUpWindow
-    
-    ${batch_name}=    Get Text    xpath=//input[@data-bt-testing-model_name='stock.picking' and @data-bt-testing-name='parent_batch']
+    Many2OneSelect    stock.picking    parent_batch    ${BATCH1}
 
     Many2OneSelect    stock.picking    warehouse_src_id    Gudang Pusat
     Many2OneSelect    stock.picking    warehouse_dest_id    Riung
@@ -46,7 +43,7 @@ Create Stock Picking Gudang - Riung
 
 Create Stock Picking Gudang - Jatinangor
     Button    stock.picking    oe_list_add
-    Many2OneSelect    stock.picking    parent_batch    ${batch_name}
+    Many2OneSelect    stock.picking    parent_batch    ${BATCH1}
     Many2OneSelect    stock.picking    warehouse_src_id    Gudang Pusat
     Many2OneSelect    stock.picking    warehouse_dest_id    Jatinangor
 
@@ -71,7 +68,7 @@ Create Stock Picking Gudang - Jatinangor
 
 Create Stock Picking Gudang - Gerlong
     Button    stock.picking    oe_list_add
-    Many2OneSelect    stock.picking    parent_batch    ${batch_name}
+    Many2OneSelect    stock.picking    parent_batch    ${BATCH1}
     Many2OneSelect    stock.picking    warehouse_src_id    Gudang Pusat
     Many2OneSelect    stock.picking    warehouse_dest_id    Gerlong
 
